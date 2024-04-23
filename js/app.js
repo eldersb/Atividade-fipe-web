@@ -1,7 +1,8 @@
 const app = () => {
     return {
-         fabricante: '',
-         modelo: '',
+        tipoEscolhido: 'motos',
+        fabricante: '',
+        modelo: '',
         fabricantes: [],
         fabricanteSelecionado: [],
         modelos: [],

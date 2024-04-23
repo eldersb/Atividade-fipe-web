@@ -32,13 +32,13 @@
             <div class="vehicles_types_container">
 
                 <ul id="vehicles_types">
-                    <li data-type="motos" class="active">
+                    <li data-type="motos" :class="{ 'active' : tipoEscolhido === 'motos' }" @click="tipoEscolhido = 'motos' ">
                         <img src="images/moto.svg" alt="Motocicletas">
                     </li>
-                    <li data-type="caminhoes">
+                    <li data-type="caminhoes" :class="{ 'active': tipoEscolhido === 'caminhoes' }" @click="tipoEscolhido = 'caminhoes'">
                         <img src="images/truck.svg" alt="Caminhões">
                     </li>
-                    <li data-type="carros">
+                    <li data-type="carros" :class="{ 'active': tipoEscolhido === 'carros' }" @click="tipoEscolhido = 'carros'">
                         <img src="images/car.svg" alt="Carros de Passeio">
                     </li>
                 </ul>
