@@ -47,23 +47,27 @@
 
             <h2>Selecione o fabricante do veículo</h2>
 
-            <select id="vehicles_brand" x-on:change="selecionarFabricante()" x-model="fabricanteSelecionado">
+            <select id="vehicles_brand" x-on:change="selecionarFabricante()" x-model="fabricante">
                 <template x-for="fabricante in fabricantes">
-                    <option :value="fabricante.id" x-text="fabricante.name" ></option>
+                    <option :value="fabricante.code" x-text="fabricante.name" ></option>
                 </template>
             </select>
 
             <h2>Selecione o modelo do veículo</h2>
 
-            <select id="vehicles_model">
+            <select id="vehicles_model" x-on:change="selecionarModelo()" x-model="modelo">
                 <template x-for="modelo in modelos">
-                    <option :value="modelo.id" x-text="modelo.name" ></option>
+                    <option :value="modelo.code" x-text="modelo.name" ></option>
                 </template>
             </select>
 
             <h2>Selecione o ano do veículo</h2>
 
-            <select id="vehicles_year" disabled></select>
+            <select id="vehicles_year">
+                <template x-for="ano in anos">
+                    <option :value="ano.code" x-text="ano.name" ></option>
+                </template>
+            </select>
 
             <div class="search_button hide">
                 <div class="icon">
