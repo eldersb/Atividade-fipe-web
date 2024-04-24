@@ -56,7 +56,7 @@
 
             <h2>Selecione o modelo do veículo</h2>
 
-            <select id="vehicles_model" x-on:change="selecionarModelo()" x-model="modelo" x-bind:disabled="!fabricante">
+            <select id="vehicles_model" x-on:change="selecionarModelo()" x-model="modelo" :disabled="!fabricante">
               <option selected >Modelo do veículo</option>
                 <template x-for="modelo in modelos">
                     <option :value="modelo.code" x-text="modelo.name" ></option>
@@ -65,14 +65,14 @@
 
             <h2>Selecione o ano do veículo</h2>
 
-            <select id="vehicles_year"  x-bind:disabled="!modelo" >
+            <select id="vehicles_year"  :disabled="!modelo" >
               <option selected >Ano do veículo</option>
                 <template x-for="ano in anos">
                     <option :value="ano.code" x-text="ano.name" ></option>
                 </template>
             </select>
 
-            <div class="search_button">
+            <div :class= "(anoSelecionado)? 'search_button search_button_show' : 'search_button hide_modal' " @click="buscarPreco()">
                 <div class="icon">
                     <img src="images/search.svg">
                 </div>
@@ -90,14 +90,16 @@
 
         </div>
 
+       
+
     </div>
 
-    <div class="modal hide_modal">
+    <div :class="(botaoSelecionado)? 'modal' : 'modal hide_modal' ">
         <div class="body">
 
             <div class="row">
                 <div class="vehicle_name"></div>
-                <div class="close">
+                <div class="close" >
                     <img src="images/close.svg">
                 </div>
             </div>
@@ -133,6 +135,7 @@
 
         </div>
     </div>
+    
 
     <script src="js/app.js"></script>
     

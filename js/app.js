@@ -7,6 +7,8 @@ const app = () => {
         fabricanteSelecionado: [],
         modelos: [],
         anos: [],
+        anoSelecionado: false,
+        botaoSelecionado: false,
 
         verificarTipo(tipo){
             this.tipoEscolhido = tipo;
@@ -20,6 +22,8 @@ const app = () => {
         },
 
         init() {
+
+            console.log(this.modal);
             
             let url;
            
@@ -70,13 +74,18 @@ const app = () => {
             axios.get(url)
              .then(response =>{
                 this.anos = response.data;
+                this.anoSelecionado = true;
                 console.log(response.data);
                 
              })
              .catch(function(error){
                 console.log(error);
              })
-        }
+         },
+          buscarPreco(){
+              this.botaoSelecionado = true;
+              console.log(this.botaoSelecionado);
+          }
 
     }
 }
