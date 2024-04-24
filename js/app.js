@@ -1,6 +1,6 @@
 const app = () => {
     return {
-        tipoEscolhido: 'motos',
+        tipoEscolhido: 'motorcycles',
         fabricante: '',
         modelo: '',
         fabricantes: [],
@@ -8,24 +8,42 @@ const app = () => {
         modelos: [],
         anos: [],
 
+        verificarTipo(tipo){
+            this.tipoEscolhido = tipo;
+            console.log(this.tipoEscolhido)
+            this.init();
+           
+        },
 
         init() {
-            axios.get('https://fipe.parallelum.com.br/api/v2/motorcycles/brands')
-                .then((response) => {
-                    this.fabricantes = response.data;
-                    console.log(this.fabricante);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                })
-        },
-        selecionarFabricante(){
-            // console.log(this.fabricante)
-            // console.log(this.fabricantes)
-            // console.log(this.fabricanteSelecionado)
-            // console.log(this.modelos)
             
-            const url = `https://fipe.parallelum.com.br/api/v2/motorcycles/brands/${this.fabricante}/models`
+            let url;
+
+                if(this.tipoEscolhido === 'motorcycles'){
+                     url = `https://fipe.parallelum.com.br/api/v2/motorcycles/brands`
+                } else if(this.tipoEscolhido === 'trucks'){
+                    url = `https://fipe.parallelum.com.br/api/v2/trucks/brands`
+                } else if(this.tipoEscolhido === 'cars'){
+                    url = `https://fipe.parallelum.com.br/api/v2/cars/brands`
+                }
+
+                console.log(url);
+
+                    axios.get(url)
+                     .then((response) => {
+                         this.fabricantes = response.data;
+                        console.log(this.fabricante);
+                     })
+                     .catch(function (error) {
+                         console.log(error);
+                     })
+                
+               
+             },
+             selecionarFabricante(){
+        
+
+            const url = `https://fipe.parallelum.com.br/api/v2/${this.tipoEscolhido}/brands/${this.fabricante}/models`
 
             
             this.modelos = [];
@@ -41,7 +59,7 @@ const app = () => {
             
         },
         selecionarModelo(){
-            const url = `https://fipe.parallelum.com.br/api/v2/motorcycles/brands/${this.fabricante}/models/${this.modelo}/years`
+            const url = `https://fipe.parallelum.com.br/api/v2/${this.tipoEscolhido}/brands/${this.fabricante}/models/${this.modelo}/years`
 
             this.anos = [];
             axios.get(url)
