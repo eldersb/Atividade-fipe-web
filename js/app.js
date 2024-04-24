@@ -10,7 +10,11 @@ const app = () => {
 
         verificarTipo(tipo){
             this.tipoEscolhido = tipo;
-            console.log(this.tipoEscolhido)
+            this.fabricante = '';
+            this.modelo = '';
+            this.fabricantes = [];
+            this.modelos = [];
+            this.anos = [];
             this.init();
            
         },
@@ -18,6 +22,7 @@ const app = () => {
         init() {
             
             let url;
+           
 
                 if(this.tipoEscolhido === 'motorcycles'){
                      url = `https://fipe.parallelum.com.br/api/v2/motorcycles/brands`
@@ -27,7 +32,7 @@ const app = () => {
                     url = `https://fipe.parallelum.com.br/api/v2/cars/brands`
                 }
 
-                console.log(url);
+                // console.log(url);
 
                     axios.get(url)
                      .then((response) => {
