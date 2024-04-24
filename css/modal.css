@@ -10,10 +10,10 @@
     align-items: center;
 }
 
-.hide_modal {
+  .hide_modal {
     display: none;
 }
-
+  
 .modal .body {
     background-color: white;
     width: 542px;
