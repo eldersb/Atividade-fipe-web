@@ -3,10 +3,14 @@ const app = () => {
         tipoEscolhido: 'motorcycles',
         fabricante: '',
         modelo: '',
+        ano: '',
+
         fabricantes: [],
-        fabricanteSelecionado: [],
+        // fabricanteSelecionado: [],
         modelos: [],
         anos: [],
+        fipeSelecionado: [],
+
         anoSelecionado: false,
         botaoSelecionado: false,
 
@@ -14,19 +18,20 @@ const app = () => {
             this.tipoEscolhido = tipo;
             this.fabricante = '';
             this.modelo = '';
+            this.ano = '';
             this.fabricantes = [];
             this.modelos = [];
             this.anos = [];
+            this.botaoSelecionado = false;
             this.init();
            
         },
 
         init() {
 
-            console.log(this.modal);
+            console.log(this.botaoSelecionado);
             
             let url;
-           
 
                 if(this.tipoEscolhido === 'motorcycles'){
                      url = `https://fipe.parallelum.com.br/api/v2/motorcycles/brands`
@@ -76,15 +81,33 @@ const app = () => {
                 this.anos = response.data;
                 this.anoSelecionado = true;
                 console.log(response.data);
+                console.log(this.anos)
                 
              })
              .catch(function(error){
                 console.log(error);
              })
-         },
+         }, selecionarAno(){
+
+            const url = `https://fipe.parallelum.com.br/api/v2/${this.tipoEscolhido}/brands/${this.fabricante}/models/${this.modelo}/years/${this.ano}`;
+
+            axios.get(url)
+            .then(response => {
+              this.fipeSelecionado = response.data;
+              console.log(this.fipeSelecionado)
+             
+            }).catch(function(error){
+              console.log(error)
+            })
+         
+         
+        },
           buscarPreco(){
               this.botaoSelecionado = true;
-              console.log(this.botaoSelecionado);
+              console.log(this.botaoSelecionado);  
+
+             
+              
           }
 
     }
