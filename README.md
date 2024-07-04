@@ -10,6 +10,9 @@ Atividade proposta em sala de aula pelo professor Paulo Reis na disciplina de De
 **Github page**
 * https://eldersb.github.io/Atividade-fipe-web/
 
+**Vercel**
+* https://atividade-fipe-web.vercel.app/
+
 **Link da API utilizada**
 * https://deividfortuna.github.io/fipe/v2/
   
